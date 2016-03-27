@@ -1,6 +1,10 @@
 # Pong
 Pong game in JS and HTML5 Canvas
 ## How to play
-- Open on any touch device and invite friend to play with you 
+- on any touch device and invite friend to play with you 
+
+or
+
+- on PC with keyboard, one player moves with "W" and "S", other with up and down arrows 
 
 Available on http://pevecyan.github.io/pong/

@@ -4,6 +4,9 @@ function Player(id) {
 
     this.score = 0;
 
+    //Keyboard movement detection
+    this.moveDirection = 0;
+
     this.id = id;
     if (id == 1) {
         this.x = 50;
@@ -18,6 +21,9 @@ Player.prototype = {
     draw: function(context) {
         context.fillStyle = "#FFFFFF";
         context.fillRect(this.x, this.y, this.width, this.height);
+    },
+    update: function(elapsedTime){
+        this.move(this.x, this.y + (this.height/2) + this.moveDirection * elapsedTime/5);
     },
     move: function(x, y) {
         //this.x = x - this.width / 2;

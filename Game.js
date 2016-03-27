@@ -7,6 +7,8 @@ function bodyLoaded() {
 
     game = new Game(canvas);
 
+
+    //Touch input
     canvas.addEventListener('touchmove', function(event) {
         event.preventDefault();
         if (event.targetTouches.length > 0) {
@@ -20,6 +22,36 @@ function bodyLoaded() {
             }
 
 
+        }
+    }, false);
+
+    //Keyboard input
+    window.addEventListener('keydown', function(event){
+        if(event.keyCode == 87 && game.playerOne.moveDirection == 0){
+            game.playerOne.moveDirection = -1;
+        }
+        if(event.keyCode == 83 && game.playerOne.moveDirection == 0){
+            game.playerOne.moveDirection = 1;
+        }
+        if(event.keyCode == 38 && game.playerTwo.moveDirection == 0){
+            game.playerTwo.moveDirection = -1;
+        }
+        if(event.keyCode == 40 && game.playerTwo.moveDirection == 0){
+            game.playerTwo.moveDirection = 1;
+        }
+    }, false);
+    window.addEventListener('keyup', function(event){
+        if(event.keyCode == 87 && game.playerOne.moveDirection == -1){
+            game.playerOne.moveDirection = 0;
+        }
+        if(event.keyCode == 83 && game.playerOne.moveDirection == 1){
+            game.playerOne.moveDirection = 0;
+        }
+        if(event.keyCode == 38 && game.playerTwo.moveDirection == -1){
+            game.playerTwo.moveDirection = 0;
+        }
+        if(event.keyCode == 40 && game.playerTwo.moveDirection == 1){
+            game.playerTwo.moveDirection = 0;   
         }
     }, false);
 
@@ -153,6 +185,15 @@ Game.prototype = {
     },
     update: function() {
         this.ball.update(this.currentTime - this.previusTime);
+        this.playerOne.update(this.currentTime - this.previusTime);
+        this.playerTwo.update(this.currentTime - this.previusTime);
+        if(this.playerOne.score == 7 || this.playerTwo.score == 7){
+             this.playerOne = new Player(1);
+            this.playerTwo = new Player(2);
+
+
+            this.ball = new Ball(this.playerOne, this.playerTwo);
+        }  
     },
     gameLoop: function(gameTime) {
         if (this.startTime == null) {
