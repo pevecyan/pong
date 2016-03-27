@@ -7,4 +7,4 @@ or
 
 - on PC with keyboard, one player moves with "W" and "S", other with up and down arrows 
 
-Available on http://pevecyan.github.io/pong/
+Available to play on http://pevecyan.github.io/pong/
